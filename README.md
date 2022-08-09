@@ -1,2 +1,3 @@
-# qr-code-generator
-Created with CodeSandbox
+# QR Code Generator
+
+SVG, JPEG, PND, WEBP, Base64
