@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, useState } from 'react'
-import QRCode from 'qrcode'
 import { toast } from 'react-toastify'
+import QRCode from 'qrcode'
 
 import { Settings, SettingsKeys } from '../types'
 
