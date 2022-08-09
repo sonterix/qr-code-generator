@@ -1,0 +1,40 @@
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-lightgrey: #e8e8e8;
+  --color-grey: #888;
+  --color-darkgrey: #333;
+  --color-red: #b82b2b;
+  --color-orange: #e17055;
+  --color-green: #00b894;
+  --color-blue: #0984e3;
+  --color-yellow: #fdcb6e;
+  --color-purple: #6c5ce7;
+  --color-darkpurple: #5043ad;
+;
+
+  --font-family-heading: 'Sigmar One', cursive;
+  --font-family-main: 'Roboto', sans-serif;
+
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-md: 16px;
+  --font-lg: 18px;
+  --font-xl: 20px;
+  --font-xxl: 32px;
+
+  --trans: 0.2s ease;
+  
+  // Custom styles for react-toastify
+  --toastify-color-info: var(--color-blue);
+  --toastify-color-success: var(--color-green);
+  --toastify-color-warning: var(--color-yellow);
+  --toastify-color-error: var(--color-red);
+
+  --toastify-toast-width: 320px;
+  --toastify-toast-min-height: 52px;
+  --toastify-font-family: var(--font-family-main);
+}
+
+
+
