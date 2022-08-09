@@ -22,19 +22,32 @@ body {
   background-color: var(--color-purple);
   -webkit-font-smoothing: antialiased;
 
-  img, picture, video, canvas, svg {
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
     display: block;
     max-width: 100%;
   }
 
-  input, button, textarea, select {
+  input,
+  button,
+  textarea,
+  select {
     font: inherit;
   }
 
-  p, h1, h2, h3, h4, h5, h6 {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     overflow-wrap: break-word;
   }
-  
+
   button {
     display: inline-block;
     padding: 5px 15px;
@@ -68,5 +81,9 @@ body {
     color: var(--color-black);
     background-color: var(--color-white);
     border: 1px solid var(--color-black);
+  }
+
+  .Toastify__close-button:hover {
+    background-color: transparent;
   }
 }

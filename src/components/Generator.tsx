@@ -10,31 +10,30 @@ const Generator: FC = () => {
   const [url, setUrl] = useState<string>('')
   const [settings, setSettings] = useState<Settings>({
     margin: 1,
-    scale: 4,
-    width: 1,
-    quality: 1,
-    errorCorrectionLevel: 'high',
+    scale: 1,
+    width: 600,
+    errorCorrectionLevel: 'medium',
     color: {
-      dark: '#000',
-      light: '#fff'
+      dark: '#000000',
+      light: '#ffffff'
     }
   })
 
-  const handleUrlField = ({
-    target: { value }
-  }: ChangeEvent<HTMLInputElement>): void => {
+  const handleUrlField = ({ target: { value } }: ChangeEvent<HTMLInputElement>): void => {
     setUrl(value)
   }
 
-  const handleSettingsFields = (key: SettingsKeys) => ({
-    target: { value }
-  }: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
-    if (key === 'dark' || key === 'light') {
-      setSettings(prev => ({ ...prev, color: { ...prev.color, [key]: value } }))
-    } else {
-      setSettings(prev => ({ ...prev, [key]: value }))
+  const handleSettingsFields =
+    (key: SettingsKeys) =>
+    ({ target: { value } }: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
+      if (key === 'dark' || key === 'light') {
+        setSettings(prev => ({ ...prev, color: { ...prev.color, [key]: value } }))
+      } else if (key === 'margin' || key === 'scale' || key === 'width') {
+        setSettings(prev => ({ ...prev, [key]: Number(value) }))
+      } else {
+        setSettings(prev => ({ ...prev, [key]: value }))
+      }
     }
-  }
 
   const handleToggleSettings = (): void => {
     setShowSettings(prev => !prev)
@@ -105,28 +104,12 @@ const Generator: FC = () => {
         <h3>Generator</h3>
       </section>
 
-      <section
-        className={`generator__app${qrCode ? ' generator__app_qr-generated' : ''}`}
-      >
-        <section
-          className={`generator__app__url${
-            qrCode ? ' generator__app__url_slide' : ''
-          }`}
-        >
+      <section className={`generator__app${qrCode ? ' generator__app_qr-generated' : ''}`}>
+        <section className={`generator__app__url${qrCode ? ' generator__app__url_slide' : ''}`}>
           <label htmlFor="url-input">Text goes here:</label>
-          <input
-            id="url-input"
-            type="text"
-            placeholder="example.com"
-            value={url}
-            onChange={handleUrlField}
-          />
+          <input id="url-input" type="text" placeholder="example.com" value={url} onChange={handleUrlField} />
 
-          <div
-            className={`generator__app__url__settings${
-              showSettings ? ' generator__app__url__settings_slide' : ''
-            }`}
-          >
+          <div className={`generator__app__url__settings${showSettings ? ' generator__app__url__settings_slide' : ''}`}>
             <button type="button" onClick={handleToggleSettings}>
               {showSettings ? 'Hide' : 'Show'} Settings
             </button>
@@ -178,6 +161,17 @@ const Generator: FC = () => {
                   onChange={handleSettingsFields('margin')}
                 />
               </li>
+              <li>
+                <label htmlFor="size-input">Size</label>
+                <input
+                  id="size-input"
+                  type="number"
+                  value={settings.width}
+                  step="50"
+                  min="0"
+                  onChange={handleSettingsFields('width')}
+                />
+              </li>
             </ul>
           </div>
 
@@ -186,15 +180,8 @@ const Generator: FC = () => {
           </button>
         </section>
 
-        <section
-          className={`generator__app__qr-code${
-            qrCode ? ' generator__app__qr-code_show' : ''
-          }`}
-        >
-          <div
-            className="generator__app__qr-code__code"
-            dangerouslySetInnerHTML={{ __html: qrCode }}
-          />
+        <section className={`generator__app__qr-code${qrCode ? ' generator__app__qr-code_show' : ''}`}>
+          <div className="generator__app__qr-code__code" dangerouslySetInnerHTML={{ __html: qrCode }} />
           <div className="generator__app__qr-code__actions">
             <button type="button" onClick={handleGetSVG}>
               SVG
