@@ -44,7 +44,8 @@
 
     &__url {
       margin: 0 auto;
-      width: 400px;
+      max-width: 400px;
+      width: 100%;
 
       > label {
         display: block;
